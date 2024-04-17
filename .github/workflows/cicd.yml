@@ -40,6 +40,11 @@ on:
         default: 'msr'
         required: true
         type: string
+      deploymentNamespace:
+        description: 'Target deployment namespace'
+        default: 'default'
+        required: false
+        type: string
   workflow_call: # Support for reusable workflows. Example: Have the current workflow code executed multiple times per single microservice in a parent workflow that handles the entire solution.
     inputs:
       dockerfile:
