@@ -79,6 +79,11 @@ on:
         default: 'msr'
         required: true
         type: string
+      deploymentNamespace:
+        description: 'Target deployment namespace'
+        default: 'default'
+        required: false
+        type: string
 
 env:
   SAG_CR_USER: ${{ secrets.SAG_CR_USER }}
@@ -167,6 +172,7 @@ jobs:
           docker-registry: ${DOCKER_REGISTRY}
           docker-username: ${DOCKER_USER}
           docker-password: ${DOCKER_PASSWORD}
+          namespace: ${{ inputs.deploymentNamespace }}
           extra-args: >- 
             --set "image.repository=${{ needs.build.outputs.imageRepository }}"
             --set "image.tag=${{ needs.build.outputs.imageTag }}" 
